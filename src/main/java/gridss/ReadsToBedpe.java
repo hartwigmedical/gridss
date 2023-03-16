@@ -58,7 +58,9 @@ public class ReadsToBedpe extends CommandLineProgram {
 		log.debug("Setting language-neutral locale");
     	java.util.Locale.setDefault(Locale.ROOT);
     	validateParameters();
-    	SamReaderFactory readerFactory = SamReaderFactory.makeDefault().referenceSequence(REFERENCE_SEQUENCE);
+    	SamReaderFactory readerFactory = SamReaderFactory.makeDefault()
+				.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+				.referenceSequence(REFERENCE_SEQUENCE);
     	try {
     		try (SamReader reader = readerFactory.open(INPUT)) {
     			SAMFileHeader header = reader.getFileHeader();

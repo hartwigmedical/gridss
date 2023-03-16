@@ -34,7 +34,9 @@ public class IterativeSplitReadRealigner extends SplitReadRealigner {
 	public IterativeSplitReadRealigner(GenomicProcessingContext pc, FastqAligner aligner) {
 		super(pc.getReference());
 		this.pc = pc;
-		this.readerFactory = SamReaderFactory.makeDefault().referenceSequence(pc.getReferenceFile());
+		this.readerFactory = SamReaderFactory.makeDefault()
+				.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+				.referenceSequence(pc.getReferenceFile());
 		this.aligner = aligner;
 	}
 

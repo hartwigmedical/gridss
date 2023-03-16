@@ -1,5 +1,7 @@
 package gridss;
 
+import htsjdk.samtools.ValidationStringency;
+
 public class Defaults {
 	public static final boolean IGNORE_FILE_TIMESTAMPS;
 	public static final int ASYNC_BUFFERS;
@@ -7,6 +9,8 @@ public class Defaults {
 	public static final boolean DELETE_TEMPORARY_FILES;
 	public static final int SUPPRESS_DATA_ERROR_MESSAGES_AFTER;
 	public static final boolean WRITE_ZERO_OR_EMTPY_VCF_FIELDS;
+
+	public static final ValidationStringency DEFAULT_VALIDATION_STRINGENCY = ValidationStringency.SILENT;
 	/**
 	 * Output to temporary file. This allows restarting when a process is killed
 	 * without having to worry about partially written output files being used

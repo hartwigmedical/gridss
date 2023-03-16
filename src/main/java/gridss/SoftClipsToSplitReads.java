@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 import gridss.cmdline.ReferenceCommandLineProgram;
 import htsjdk.samtools.SAMFileWriterFactory;
 import htsjdk.samtools.SamReaderFactory;
+import htsjdk.samtools.ValidationStringency;
 import htsjdk.samtools.util.IOUtil;
 import htsjdk.samtools.util.Log;
 import org.broadinstitute.barclay.argparser.Argument;
@@ -93,7 +94,9 @@ public class SoftClipsToSplitReads extends ReferenceCommandLineProgram {
     	List<Closeable> toClose = new ArrayList<>();
     	SplitReadRealigner realigner;
     	try {
-    		SamReaderFactory readerFactory = SamReaderFactory.makeDefault().referenceSequence(REFERENCE_SEQUENCE);
+    		SamReaderFactory readerFactory = SamReaderFactory.makeDefault()
+					.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+					.referenceSequence(REFERENCE_SEQUENCE);
         	SAMFileWriterFactory writerFactory = new SAMFileWriterFactory();
         	switch (ALIGNER) {
 				case BWAMEM:

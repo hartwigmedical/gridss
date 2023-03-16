@@ -29,6 +29,7 @@ import htsjdk.samtools.SAMFileHeader.SortOrder;
 import htsjdk.samtools.SAMRecord;
 import htsjdk.samtools.SamReader;
 import htsjdk.samtools.SamReaderFactory;
+import htsjdk.samtools.ValidationStringency;
 import htsjdk.samtools.reference.ReferenceSequence;
 import htsjdk.samtools.reference.ReferenceSequenceFileWalker;
 import htsjdk.samtools.util.*;
@@ -144,7 +145,9 @@ public abstract class SinglePassSamProgram extends CommandLineProgram {
 
         // Setup the standard inputs
         IOUtil.assertFileIsReadable(input);
-        final SamReader in = SamReaderFactory.makeDefault().referenceSequence(referenceSequence).open(input);
+        final SamReader in = SamReaderFactory.makeDefault()
+                .validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+                .referenceSequence(referenceSequence).open(input);
 
         // Optionally load up the reference sequence and double check sequence dictionaries
         final ReferenceSequenceFileWalker walker;

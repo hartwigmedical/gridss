@@ -11,6 +11,7 @@ import htsjdk.samtools.SAMFileHeader;
 import htsjdk.samtools.SAMFileWriterFactory;
 import htsjdk.samtools.SamReader;
 import htsjdk.samtools.SamReaderFactory;
+import htsjdk.samtools.ValidationStringency;
 import htsjdk.samtools.reference.ReferenceSequenceFile;
 import htsjdk.samtools.reference.ReferenceSequenceFileFactory;
 import htsjdk.samtools.util.IOUtil;
@@ -80,7 +81,9 @@ public abstract class MultipleSamFileCommandLineProgram extends ReferenceCommand
     private String getCategoryLabelFor(File file) {
     	String label = file.getName();
     	if (file.exists() && getContext().getConfig().useReadGroupSampleNameCategoryLabel) {
-    		try (SamReader reader = SamReaderFactory.makeDefault().referenceSequence(REFERENCE_SEQUENCE).open(file)) {
+    		try (SamReader reader = SamReaderFactory.makeDefault()
+					.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+					.referenceSequence(REFERENCE_SEQUENCE).open(file)) {
     			SAMFileHeader header = reader.getFileHeader();
     			if (header.getReadGroups().size() == 1) {
     				String sampleName = header.getReadGroups().get(0).getSample();

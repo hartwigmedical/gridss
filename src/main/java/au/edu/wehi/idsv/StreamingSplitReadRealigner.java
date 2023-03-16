@@ -122,7 +122,9 @@ public class StreamingSplitReadRealigner extends SplitReadRealigner {
 
     public void createSupplementaryAlignments(final File input, final File output, final File outputModified) throws IOException {
         SAMFileWriterFactory writerFactory = new SAMFileWriterFactory();
-        SamReaderFactory readerFactory = SamReaderFactory.makeDefault().referenceSequence(pc.getReferenceFile());
+        SamReaderFactory readerFactory = SamReaderFactory.makeDefault()
+                .validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+                .referenceSequence(pc.getReferenceFile());
         try (SamReader reader = readerFactory.open(input)) {
             boolean unsortedRecordsOutputToSameFile = outputModified == null || output.equals(outputModified);
             SAMFileHeader outputHeader = reader.getFileHeader().clone();

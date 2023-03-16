@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableList;
 import htsjdk.samtools.SAMSequenceDictionary;
 import htsjdk.samtools.SamReader;
 import htsjdk.samtools.SamReaderFactory;
+import htsjdk.samtools.ValidationStringency;
 import htsjdk.samtools.reference.FastaSequenceFile;
 import htsjdk.samtools.reference.IndexedFastaSequenceFile;
 import htsjdk.samtools.reference.ReferenceSequenceFile;
@@ -120,7 +121,9 @@ public abstract class ReferenceCommandLineProgram extends CommandLineProgram {
 		ensureDictionaryMatches(input, dictionary, REFERENCE_SEQUENCE);
 	}
 	public static void ensureDictionaryMatches(File input, SAMSequenceDictionary referenceDictionary, File reference) throws IOException {
-		final SamReaderFactory samFactory = SamReaderFactory.makeDefault().referenceSequence(reference);
+		final SamReaderFactory samFactory = SamReaderFactory.makeDefault()
+				.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+				.referenceSequence(reference);
 		SamReader reader = null;
 		reader = samFactory.open(input);
 		try {

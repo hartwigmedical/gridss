@@ -116,7 +116,9 @@ public class PreprocessForBreakendAssembly extends ReferenceCommandLineProgram {
 		tags.REMOVE_TAGS = ImmutableList.of(SamTags.IS_ASSEMBLY);
 		String threadPrefix = INPUT.getName() + "-";
 		try {
-			SamReaderFactory readerFactory = SamReaderFactory.makeDefault().referenceSequence(REFERENCE_SEQUENCE);
+			SamReaderFactory readerFactory = SamReaderFactory.makeDefault()
+					.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+					.referenceSequence(REFERENCE_SEQUENCE);
 			SAMFileWriterFactory writerFactory = new SAMFileWriterFactory();
 			try (SamReader reader = readerFactory.open(INPUT)) {
 				SAMFileHeader header = reader.getFileHeader();

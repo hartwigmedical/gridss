@@ -62,7 +62,9 @@ public abstract class ByReadNameSinglePassSamProgram extends ReferenceCommandLin
                                 final Collection<ByReadNameSinglePassSamProgram> programs) throws FileNotFoundException {
         // Setup the standard inputs
         IOUtil.assertFileIsReadable(input);
-        SamReader in = SamReaderFactory.makeDefault().referenceSequence(referenceSequence).open(input);
+        SamReader in = SamReaderFactory.makeDefault()
+				.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
+				.referenceSequence(referenceSequence).open(input);
         // Optionally load up the reference sequence and double check sequence dictionaries
         final ReferenceLookup lookup;
         if (referenceSequence == null) {
