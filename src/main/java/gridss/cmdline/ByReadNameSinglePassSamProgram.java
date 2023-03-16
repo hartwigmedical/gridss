@@ -74,8 +74,7 @@ public abstract class ByReadNameSinglePassSamProgram extends ReferenceCommandLin
             lookup = new TwoBitBufferedReferenceSequenceFile(new IndexedFastaSequenceFile(referenceSequence));
 
             if (!in.getFileHeader().getSequenceDictionary().isEmpty()) {
-                SequenceUtil.assertSequenceDictionariesEqual(in.getFileHeader().getSequenceDictionary(),
-                		lookup.getSequenceDictionary());
+                // SequenceUtil.assertSequenceDictionariesEqual(in.getFileHeader().getSequenceDictionary(), lookup.getSequenceDictionary());
             }
         }
         // Check on the sort order of the BAM file

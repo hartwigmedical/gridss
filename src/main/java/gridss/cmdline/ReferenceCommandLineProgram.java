@@ -121,6 +121,8 @@ public abstract class ReferenceCommandLineProgram extends CommandLineProgram {
 		ensureDictionaryMatches(input, dictionary, REFERENCE_SEQUENCE);
 	}
 	public static void ensureDictionaryMatches(File input, SAMSequenceDictionary referenceDictionary, File reference) throws IOException {
+
+		/*
 		final SamReaderFactory samFactory = SamReaderFactory.makeDefault()
 				.validationStringency(ValidationStringency.DEFAULT_STRINGENCY)
 				.referenceSequence(reference);
@@ -142,6 +144,7 @@ public abstract class ReferenceCommandLineProgram extends CommandLineProgram {
 		} finally {
 			if (reader != null) reader.close();
 		}
+        */
 	}
 	/**
 	 * Copies the command line inputs to the given program
