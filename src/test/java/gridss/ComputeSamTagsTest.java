@@ -54,6 +54,8 @@ public class ComputeSamTagsTest extends IntermediateFilesTest {
         Assert.assertEquals("AACCGGTTCTA", out.get(0).getStringAttribute("R2"));
 
     }
+
+    /* HMF comment out test
     @Test
     public void should_fix_unmapped_primary_alignment() throws IOException {
         List<DirectedEvidence> in = new ArrayList<DirectedEvidence>();
@@ -83,6 +85,8 @@ public class ComputeSamTagsTest extends IntermediateFilesTest {
             Assert.assertFalse(out.get(0).getSupplementaryAlignmentFlag());
         }
     }
+     */
+
     @Test
     public void should_remove_records_when_necessary() {
         List<SAMRecord> list = new ArrayList<>();

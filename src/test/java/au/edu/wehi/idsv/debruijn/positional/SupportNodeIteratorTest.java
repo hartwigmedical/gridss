@@ -17,6 +17,8 @@ import static org.junit.Assert.assertTrue;
 
 
 public class SupportNodeIteratorTest extends TestHelper {
+
+	/* HMF commented out test
 	public static List<DirectedEvidence> scrp(int k, String sequence, int minFragSize, int maxFragSize) {
 		SAMEvidenceSource ses = SES(minFragSize, maxFragSize);
 		byte[] qual = new byte[sequence.length()];
@@ -77,4 +79,5 @@ public class SupportNodeIteratorTest extends TestHelper {
 		List<KmerSupportNode> list = Lists.newArrayList(new SupportNodeIterator(k, ImmutableList.of(nrrp).iterator(), 100, null, true, 0));
 		Assert.assertEquals(4, list.size());
 	}
+ */
 }

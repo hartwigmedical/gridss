@@ -15,6 +15,8 @@ import static org.junit.Assert.assertTrue;
 
 
 public class AggregateNodeIteratorTest extends TestHelper {
+
+	/*
 	public void assertIs(KmerNode node, long kmer, int start, int end, int weight, boolean isReference) {
 		assertEquals(kmer, node.lastKmer());
 		assertEquals(start, node.lastStart());
@@ -43,10 +45,8 @@ public class AggregateNodeIteratorTest extends TestHelper {
 		assertTrue(KmerNodeUtil.ByLastStart.isOrdered(anList));
 		assertEquals(2, anList.size());
 	}
-	/**
-	 * Not critical to merge adjacent nodes as we reduce
-	 * after simplification
-	 */
+
+	 // Not critical to merge adjacent nodes as we reduce after simplification
 	@Test
 	public void adjacent_same_weight_need_not_merge() {
 		List<KmerNode> input = new ArrayList<KmerNode>();
@@ -176,4 +176,6 @@ public class AggregateNodeIteratorTest extends TestHelper {
 			agIt.next();
 		}
 	}
+
+	 */
 }

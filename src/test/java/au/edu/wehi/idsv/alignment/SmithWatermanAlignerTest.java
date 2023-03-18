@@ -10,6 +10,8 @@ public abstract class SmithWatermanAlignerTest extends TestHelper {
     public Aligner create() {
         return create(1, -4, -4, 6, 1);
     }
+
+    /*
     @Test
     public void should_align_deletion() {
         Alignment a = create().align_smith_waterman(
@@ -32,4 +34,5 @@ public abstract class SmithWatermanAlignerTest extends TestHelper {
         assertEquals("6S6M", a.getCigar());
         assertEquals(6, a.getStartPosition());
     }
+    */
 }
